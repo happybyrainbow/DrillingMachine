@@ -38,7 +38,11 @@ public class DrillingMachine {
         broken = newBroken;
     }
     public void increasePrice(double amount){
-        price = amount;
+        price = price + amount;
+    }
+
+    public void reactOnHighDemand(){
+        price = price + price * 0.25;
     }
 
     public void changePower(int watt){
@@ -48,13 +52,10 @@ public class DrillingMachine {
         if(watt > 100){
             price = price - price * 0.05;
         }
-        if(watt < 1){
+        if(watt < 0){
+            this.watt += watt;
             price = price - price * 0.1;
         }
-    }
-
-    public void reactOnHighDemand(){
-        price = price + price * 0.25;
     }
 
     public int getAge() {
@@ -77,4 +78,15 @@ public class DrillingMachine {
         return watt;
     }
 
+    public double getPricePerWatt(){
+        return price = price / watt;
+    }
+
+    public boolean isInexpensive(){
+        if(watt > 500 && price < 80){
+          return true;//System.out.println("Schnäppchen");
+        }else{
+            return false;
+        }
+    }
 }
