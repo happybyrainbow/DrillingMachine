@@ -9,9 +9,9 @@ public class DrillingMachine {
     public DrillingMachine(){
 
         name = "Arschbohrer 3000";
-        watt = (int) Math.floor(Math.random() * 1200 + 800);
-        age = (int) Math.floor(Math.random() * 9 + 1);
-        price = Math.floor(Math.random() * 450 + 50);
+        watt = (int) Math.floor(Math.random() * 1201 + 800);
+        age = (int) Math.floor(Math.random() * 11);
+        price = ((int)(Math.random() * 451 + 50)*100)/100d;
         broken = false;
 
     }
@@ -31,6 +31,25 @@ public class DrillingMachine {
         age = age + 1;
         if(age > 9){
             becomeBroken();
+        }
+    }
+
+    public void setBroken(boolean newBroken){
+        broken = newBroken;
+    }
+    public void increasePrice(double amount){
+        price = amount;
+    }
+
+    public void changePower(int watt){
+        if(watt > 0){
+            this.watt += watt;
+        }
+        if(watt > 100){
+            price = price - price * 0.05;
+        }
+        if(watt < 1){
+            price = price - price * 0.1;
         }
     }
 
