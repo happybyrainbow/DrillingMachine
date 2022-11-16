@@ -27,6 +27,14 @@ public class DrillingMachine {
         }
     }
 
+    public boolean repair2() {
+        if(broken == true) {
+            broken = false;
+            return true;
+        }
+        return false;
+    }
+
     public void aging(){
         age = age + 1;
         if(age > 9){
@@ -79,14 +87,29 @@ public class DrillingMachine {
     }
 
     public double getPricePerWatt(){
-        return price = price / watt;
+        return price / watt;
     }
 
     public boolean isInexpensive(){
         if(watt > 500 && price < 80){
-          return true;//System.out.println("Schnäppchen");
+          return true;
         }else{
             return false;
         }
+    }
+
+    public boolean increasePriceByPercentage(double percentage){
+        if(price > 0){
+            price = price + price * percentage;
+        }
+        if(price > 100){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public String getInfo(){
+        System.out.println("Name: " + name + "\nWatt: " + watt + "\nAge: " + age + "\nPrice: " + price + "\nBroken: " + broken);
     }
 }
